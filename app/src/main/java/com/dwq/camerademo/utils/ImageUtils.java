@@ -1,0 +1,39 @@
+package com.dwq.camerademo.utils;
+
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+
+/**
+ * Created by DWQ on 2018/8/9.
+ * E-Mail:lomapa@163.com
+ */
+
+public class ImageUtils {
+
+    /**
+     * 旋转图片
+     * @param bitmap
+     * @param rotation
+     * @Return
+     */
+    public static Bitmap getRotatedBitmap(Bitmap bitmap, int rotation) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(rotation);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
+                bitmap.getHeight(), matrix, false);
+    }
+
+    /**
+     * 镜像翻转图片
+     * @param bitmap
+     * @Return
+     */
+    public static Bitmap getFlipBitmap(Bitmap bitmap) {
+        Matrix matrix = new Matrix();
+        matrix.setScale(-1, 1);
+        matrix.postTranslate(bitmap.getWidth(), 0);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
+                bitmap.getHeight(), matrix, false);
+    }
+}
+
